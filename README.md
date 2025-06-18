@@ -83,3 +83,38 @@ It helps us understand which combinations of settings gave the best performance.
 
 
 
+
+
+## Repository Structure
+
+```
+📦 emissions/
+│
+├── 📁 data/
+│   └── oil-and-gas-production_country_emissions_v4_3_1.csv (or linked)
+│
+├── Final_emissions.ipynb
+│
+├── 📁 reports/
+├── model_card.md
+├── datasheet.md
+├── requirements.txt
+└── README.md
+
+    
+## Non-Technical Summary
+
+This model predicts greenhouse gas emissions from oil and gas activities across countries using historical data.
+It helps investors, policymakers, and sustainability analysts understand future emissions trends and identify high-impact countries and sectors.
+Trained on Climate TRACE data, it uses ensemble learning and Bayesian optimisation for accurate forecasting.
+Outputs include emission predictions, key driver analysis, and visual diagnostics to support climate-aligned decisions.
+    
+## How to Run
+
+1. Clone this repository.
+2. Ensure Python 3.8+ is installed.
+3. Install dependencies: `pip install -r requirements.txt`
+4. Open and run all cells in `notebooks/Final_emissions.ipynb`.
+
+Outputs (charts, SHAP plots, results) will be saved in a timestamped folder under your local output path.
+    
