@@ -1,0 +1,61 @@
+# Model Card
+
+**Input:**  
+The model takes tabular input data representing historical oil and gas emissions by country and year. Key input features include:
+- `year`
+- `iso3_country` (country code, one-hot encoded)
+- `subsector` (oil/gas activity classification, one-hot encoded)
+
+**Output:**  
+The output is a continuous numerical prediction of **greenhouse gas emissions**, expressed in **CO₂-equivalent over a 100-year timeframe** (co2e_100yr).
+
+**Model Architecture:**  
+The model is a **Stacking Regressor** composed of:
+- **Base models:**
+  - Random Forest Regressor
+  - Gradient Boosting Regressor
+  - Ridge Regression
+- **Meta-model:**
+  - Ridge Regression, which combines the outputs of the base models to produce the final prediction.
+
+Bayesian Optimisation was used to tune hyperparameters of the Random Forest model:
+- `n_estimators` (number of trees)
+- `max_depth` (tree depth)
+- `min_samples_split` (minimum samples to split a node)
+
+---
+
+## **Performance**
+
+- **Mean Absolute Error (MAE):** 3.57
+- **R² Score:** 0.89
+
+The model demonstrates high predictive accuracy on held-out test data. Performance is especially strong in countries and subsectors with higher emission volumes.
+
+**Visualizations include:**
+- **Prediction vs Actual Scatter Plot**
+- **Top 15 Feature Importances (Random Forest)**
+- **SHAP Summary Plot** for interpretability
+- **Bayesian Optimisation Convergence Plot**
+
+---
+
+## **Limitations**
+
+- The model only considers data from the oil and gas sector, and does not generalize to other emission sectors like agriculture or manufacturing.
+- It is trained on historical data and assumes future emissions follow similar patterns.
+- Interpretability is partially limited by the use of one-hot encoded geographic and categorical variables.
+- Some countries with sparse data may show higher error rates or reduced generalisation.
+
+---
+
+## **Trade-offs**
+
+- **Performance vs Interpretability:**  
+  The Stacking Regressor offers strong accuracy but can be harder to interpret than single models. SHAP values are used to mitigate this.
+
+- **Efficiency vs Accuracy:**  
+  Bayesian Optimisation improves model performance but increases training time. This was considered acceptable due to the cost-sensitive nature of emissions modeling.
+
+- **Geographic Sensitivity:**  
+  Countries with extensive historical reporting perform better. Smaller or underreported regions may have noisier predictions.
