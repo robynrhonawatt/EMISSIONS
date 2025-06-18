@@ -94,8 +94,6 @@ It helps us understand which combinations of settings gave the best performance.
 │   └── oil-and-gas-production_country_emissions_v4_3_1.csv (or linked)
 │
 ├── Final_emissions.ipynb
-│
-├── 📁 reports/
 ├── model_card.md
 ├── datasheet.md
 ├── requirements.txt
