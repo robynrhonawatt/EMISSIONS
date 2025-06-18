@@ -1,0 +1,89 @@
+# Datasheet
+
+## **Motivation**
+
+- **Purpose:**  
+  The dataset was created to enable estimation and analysis of greenhouse gas emissions from oil and gas production activities globally. It supports climate modeling, emissions forecasting, sustainability research, and ESG-focused investment analysis.
+
+- **Creators:**  
+  The dataset was compiled and published by **Climate TRACE**, a global coalition of climate researchers, nonprofits, and technology companies. Contributors include **WattTime, RMI, Global Energy Monitor**, and others. The effort is funded by various climate-focused organizations and philanthropic donors.
+
+---
+
+## **Composition**
+
+- **What does the dataset represent?**  
+  Each instance represents annual CO₂-equivalent emissions from a specific oil or gas subsector, aggregated by country.
+
+- **Data size:**  
+  Thousands of records covering over 100 countries and multiple oil/gas production subsectors.
+
+- **Missing data:**  
+  Some records contain missing emissions values or confidence ratings for specific years or subsectors. These are documented using `null` or empty fields.
+
+- **Confidentiality:**  
+  No personally identifiable information is included. All data is at the **country or facility level** and is derived from public or open satellite-based monitoring sources. No private or privileged content is included.
+
+---
+
+## **Collection Process**
+
+- **Data acquisition:**  
+  The data is collected from a combination of satellite imagery, remote sensing, machine learning inference models, and integration with public databases.
+
+- **Sampling:**  
+  The dataset is **comprehensive**, not a random sample, and aims to capture **all known** oil and gas emission sources at the national and subnational levels.
+
+- **Time frame:**  
+  Covers annual data from **2015 to 2023**, depending on country and subsector.
+
+---
+
+## **Preprocessing / Cleaning / Labeling**
+
+- **Steps taken:**  
+  - Filtered for CO₂-equivalent gases only (`co2e_100yr`)
+  - Removed rows with zero or null emissions
+  - Dropped outliers based on statistical thresholds
+  - One-hot encoded categorical features (`iso3_country`, `subsector`)
+  - Scaled or transformed certain numerical variables as needed
+
+- **Raw data availability:**  
+  Raw data files are publicly available on [Climate TRACE’s data platform](https://climatetrace.org/data), and the cleaned CSV used in this project is documented in the repository.
+
+---
+
+## **Uses**
+
+- **Additional tasks:**  
+  The dataset can be used for:
+  - Emissions benchmarking and monitoring
+  - Sector-specific policy modeling
+  - Regional emissions hotspot detection
+  - Climate risk analytics for investors and insurers
+
+- **Bias or risk considerations:**  
+  - Some regions may have lower data confidence due to limited satellite visibility or technological constraints.
+  - Countries with sparse emissions reporting may skew analysis unless adjustments are made.
+  - Users should avoid using this dataset for **individual-level policy enforcement**, as the data is aggregated and modeled.
+
+- **Unsuitable uses:**  
+  - Not appropriate for real-time emissions trading or facility-level enforcement without supplementary validation.
+  - Should not be used for punitive actions without additional data verification.
+
+---
+
+## **Distribution**
+
+- **Availability:**  
+  Publicly distributed under the **Creative Commons Attribution 4.0 International License** via the Climate TRACE website and GitHub repositories.
+
+- **Licensing:**  
+  All data used is either created by Climate TRACE or reproduced from open-access sources, such as EDGAR, FAO, or national greenhouse gas registries. Full terms of use: https://climatetrace.org/terms
+
+---
+
+## **Maintenance**
+
+- **Maintained by:**  
+  Climate TRACE Coalition. Ongoing updates are published on their GitHub page and central platform. The version used in this project is **v4.3.1 (May 2025)**.
